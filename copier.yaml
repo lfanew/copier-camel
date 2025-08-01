@@ -1,0 +1,12 @@
+group_name:
+  type: str
+  help: Java group name (e.g., com.example)
+
+project_name:
+  type: str
+  help: Project name (e.g., MyCamelProject)
+
+_tasks:
+  # Runs automatically after the initial copy operation
+  - command: python move_package.py {{project_name}} {{ group_name }}
+    when: "{{ _copier_operation == 'copy' }}"

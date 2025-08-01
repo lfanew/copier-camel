@@ -1,0 +1,12 @@
+- route:
+    id: "YamlRouteExample"
+    routeConfigurationId: "YamlErrorHandler"
+    from:
+      uri: "timer:YamlTick"
+      parameters:
+        period: "3000"
+      steps:
+        - log: "From YAML: {{message.data}}"
+        - throwException:
+            exceptionType: "java.lang.Exception"
+            message: "Some YAML exception"

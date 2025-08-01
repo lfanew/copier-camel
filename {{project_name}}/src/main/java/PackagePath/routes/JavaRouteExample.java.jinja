@@ -1,0 +1,15 @@
+package {{group_name}}.routes;
+{% raw %}
+import org.apache.camel.builder.endpoint.EndpointRouteBuilder;
+
+public class JavaRouteExample extends EndpointRouteBuilder {
+    @Override
+    public void configure() throws Exception {
+        from(timer("JavaTick").period(3000))
+            .routeId("JavaRouteExample")
+            .routeConfigurationId("JavaErrorHandler")
+            .log("From Java: {{message.data}}")
+            .throwException(new Exception("Some Java exception"));
+    }
+}
+{% endraw %}

@@ -1,0 +1,10 @@
+- routeConfiguration:
+    id: "YamlErrorHandler"
+    onException:
+      - onException:
+          exception:
+            - "java.lang.Exception"
+          handled:
+            constant: "true"
+          steps:
+            - log: "Caught exception: ${exception.message}"

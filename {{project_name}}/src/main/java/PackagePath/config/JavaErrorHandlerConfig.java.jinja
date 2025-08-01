@@ -1,0 +1,13 @@
+package {{group_name}}.config;
+
+import org.apache.camel.builder.RouteConfigurationBuilder;
+
+public class JavaErrorHandlerConfig extends RouteConfigurationBuilder {
+    @Override
+    public void configuration() throws Exception {
+        routeConfiguration("JavaErrorHandler")
+            .onException(Exception.class)
+            .log("Caught exception: ${exception.message}")
+            .handled(true);
+    }
+}

@@ -43,7 +43,7 @@ def main():
 
     # Remove the now-empty PackagePath directory
     shutil.rmtree(source_dir)
-    print(f"✅ Moved Java sources into {dest}")
+    print(f"Moved Java sources into {dest}")
 
     try:
         Path(__file__).unlink()

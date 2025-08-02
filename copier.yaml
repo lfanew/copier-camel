@@ -6,7 +6,17 @@ project_name:
   type: str
   help: Project name (e.g., MyCamelProject)
 
+camel_version:
+  type: str
+  help: Camel Version (e.g. 4.8.8)
+  default: "4.8.8"
+
+enable_lombok:
+  type: bool
+  help: Enable Project Lombok?
+  default: yes
+
 _tasks:
   # Runs automatically after the initial copy operation
-  - command: python move_package.py {{project_name}} {{ group_name }}
+  - command: python3 move_package.py {{project_name}} {{ group_name }}
     when: "{{ _copier_operation == 'copy' }}"

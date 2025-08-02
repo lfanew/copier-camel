@@ -11,25 +11,17 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("org.apache.camel:camel-bom:4.8.8"))
-    // Camel Core
-    implementation("org.apache.camel:camel-core")
-    implementation("org.apache.camel:camel-main")
-    // Camel Languages
-    implementation("org.apache.camel:camel-endpointdsl")
-    implementation("org.apache.camel:camel-yaml-dsl")
-    // Camel Components
-    implementation("org.apache.camel:camel-timer")
-    implementation("org.apache.camel:camel-http")
+    implementation(libs.bundles.camel)
+    implementation(libs.bundles.logging)
+    testImplementation(libs.bundles.testing)
 
-    // Logging
-    implementation("org.fusesource.jansi:jansi:2.4.2")
-    implementation("org.apache.logging.log4j:log4j-api:2.25.1")
-    implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.25.1")
-    implementation("org.apache.logging.log4j:log4j-core:2.25.1")
-
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    {%- if enable_lombok %}
+    // Lombok
+    compileOnly(libs.lombok)
+	annotationProcessor(libs.lombok)
+    testCompileOnly(libs.lombok)
+	testAnnotationProcessor(libs.lombok)
+    {%- endif %}
 }
 
 application {
